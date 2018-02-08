@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Anubhav Gupta</title>
+    <title>Dayanand Balaboina</title>
     <link rel="shortcut icon" href="img/a-icon.ico" />
 
     <!-- Bootstrap Core CSS -->
@@ -68,33 +68,42 @@
             <div class="row">
                 <div class="col-lg-8 text-center" style="text-align: left">
                     <!-- <hr class="light"> -->
-                    <h2 style="font-style: italic">This is Jeopardy!<h2>
+                    <h2 style="font-style: italic">Web Scraping Job Postings<h2>
                     <h4>CONCEPT</h4>
                     <p class="text-faded" style="font-size: small">
-                    This project describes a new, emerging way to shed light on a complex dataset and to communicate the findings with a broad audience. We begin this process with some exploratory data analysis, then create interactive visualizations and embed them within a narrative using infographics. We illustrate the concepts using data from 30 seasons of the TV game show Jeopardy!. Our findings uncover interesting patterns, both qualitative and quantitative, and explain our use of popular technologies during each phase of the process [1]. In this paper, we describe in detail the process by which we explored the data and built the visualizations that underlie that work.</p>
+                    In this Project my  two main objectives were:
+                        1]Determine the industry factors that are most important in predicting the salary amounts for these data.
+                        2]Determine the factors that distinguish job categories and titles from each other. For example, can required skills accurately predict job title?
+                       
+                    we need to Scrape and prepare our own data.</p>
                     <h4>DATA</h4>
                     <p class="text-faded" style="font-size: small">
-                    The initial dataset, found on Reddit, included qualitative data on over 200,000 Jeopardy! questions. It had data on the round that the question corresponded to, the questions and answers themselves, the dollar value of the question, and the show number and air date.
+                    Firstly, I have scraped the data from the site using beautifulsoup4 to get job listings for the titles, 
+                    Data+Scientist','Data+Analyst' and 'Data+Engineer'.we ended up having a data frame of shape 3210 , 5 . 
+                    The 5 columns are Title,Company,Salary,State and Description.As most of the data do not have salary values,they needed to be dropped because the 
+                    problem statement is based on salary.After loading into the DataFrame ,i strarted analysing the data by doing some EDA and Feature engineering.
+                    i ended up with clean data of size 285 , 5
                     <br><br>
-                    In our exploratory data analysis phase, we found several interesting results. For example, we found that the most frequent type of answers were related to geography. We also noticed, while looking at the average question value across years, that there was a large increase between 2001 and 2002. In 2001, the average question value was $496. It increased to $940 in 2002. With additional research, we found that the values doubled on November 26, 2001. This finding informed some of the subsequent decisions we made with respect to comparing episodes across time.
+                    In my exploratory data analysis phase,i found out that most of the jobs are from NSW when coampred to all other states.
+                    The highest salary in the dataset is for the titile "Head of Data Science and the pay is 300K PA and is from state NSW.
+                    The median salary is 95K PA.Most of the job postings were of title data analyst followed by data science and data engineer.
+                    Feature engineering title column and extracted senior ,mid, and junior levels. Additionally added skills column by extacting 
+                    skills from the description.
                     </p>
                     <h4>PROCESS</h4>
                     <p class="text-faded" style="font-size: small">
-                    In order to analyze the Jeopardy data and generate insights out of it, we followed the a process that looked at the data using the following visualizations:
+                    In order to analyze the data and generate insights out of it, we followed the a process that looked at the data using the following visualizations:
                     <ul class="text-faded" style="font-size: small">
                         <li>
-                        Contestant and Gender Infographics and Line Chart
+                        Job postings across all states
                         </li>
                         <li>
                         Exploratory Data Analysis using Tableau</li>
                         <li>
-                        Exploring the wagers data
+                        Boxplots to see outliers
                         </li>
                         <li>
-                        Parallel Coordinate Visualization
-                        </li>
-                        <li>
-                        Linking Line Chart
+                        confusion matrix
                         </li>
                         <li>
                         Scatter Plot
@@ -103,11 +112,10 @@
                         Bipartite Graph
                         </li>
                         <li>
-                        Jeopardy! Game Board
+                        ROC
                         </li>
                     </ul>
                     </p>
-                   <a href="http://people.ischool.berkeley.edu/~japple/jeopardy/" " class="btn btn-primary btn-xl page-scroll" target="_blank">View Visualization</a>
                 </div>
                 <div class="col-lg-4 text-center" style="padding-top: 100px">
                 <img src="img/jeopardy/jeopardy1.png" class="img-responsive" alt="" style="margin :auto">
