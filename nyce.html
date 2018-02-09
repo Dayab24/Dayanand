@@ -77,27 +77,26 @@
                     3] Evaluate the mean dollar value of different renovations.</p>
                     <h4>DATA</h4>
                     <p class="text-faded" style="font-size: small">
-                    The dataset was obtained from the New York City Taxi and Limousine Commission(NYCT&L).  It covers four years of taxi operations in New York City and includes 697,622,444 trips. 
-                    Source of the dataset: http://publish.illinois.edu/dbwork/open-data/
+                    The dataset was obtained from the publicily available fivethirtyeight. 
+                    Source of the dataset: https://github.com/fivethirtyeight/data/tree/master/drug-use-by-age
+                                           https://catalog.data.gov/dataset/sat-college-board-2010-school-level-results-5c6d6
                     <br><br>
-                    he data consists of two parts - Trip data containing trip information like pickup_datetime, trip distance, trip time etc. and Fare data containing fare information like fare amount, tip amount etc.
+                
                     <br><br>
-                    We had latitude and longitude information in our trip data. We wanted to get information about the characteristics of the place like affluency, cost of living etc. Our initial plan was to split our latitude and longitude into the different boroughs. But the boroughs extend over a large area, so we instead decided to go with zip codes . We found open data which had zip codes  and the latitude-longitude pair for the centre of that zip code. We also scraped a website to obtain demographic information of a zip code. We joined these datasets and added in the attributes on demographic information to our  merged trip-fare dataset.
+                   
                     </p>
                     <h4>APPROACH</h4>
                     <p class="text-faded" style="font-size: small">
-                    Like mentioned earlier, the dataset consists of trip and fare data. Our initial ideas were to predict peak hours in  the city and predict traffic at  different times as a function of the average speed. After further analysis and discussion we concluded these problem statements are good visualization projects and we looked at more machine learning based problem statement.
+                    Import the CSV files into the Jupyter Notebook and losd them into pandas dataframe and start the EDA by studying the each feature and relations.
+                    Generally the projects in datascience are more focused at more machine learning based problem statement but EDA is the main part before we dig into the machine learning..
                     <br><br>
-                    Wait time Prediction
-                    Our next approach was to predict the wait time - the time a taxi driver has to wait in between trips. The dataset does not explicitly have the wait times. We would have had to derive the wait times between trips  from the pickup and dropoff timings and the passenger count information. We performed these data operations and figured out the dataset had 98% zero wait time and the rest of it was about an average of just one minute. Since the data was very skewed and since there was not much of a practical significance of the predicting wait time  problem we decided to try a explore the dataset with a slightly different angle. We found that our previous analysis could be leveraged to try and solve another challenging problem, that of tip prediction.
+                    
                     <br><br>
-                    Tip Amount Prediction
-                    We wanted to predict the tip amount a driver is likely to receive. 
-                    Since we found the data to be skewed for wait times, we wanted to confirm that was not the case for tip amounts. We found 50% of the data had zero tip. So, we were safe here. Our generic approach was to visualize the data to understand it better. This would give us information about outliers and incorrect (absurd values) that need to be removed. Apart from data cleaning, the other important affordance of the visualizations is the correlation we can derive between the different attributes and the tip amount. 
+                    
                     </p>
                      <h4>ALGORITHMS USED</h4>
                     <p class="text-faded" style="font-size: small">
-                    In order to analyze the Jeopardy data and generate insights out of it, we followed the a process that looked at the data using the following visualizations:
+                    In order to analyze the data and generate insights out of it, we followed the a process that looked at the data using the following few of many visualizations:
                     <ul class="text-faded" style="font-size: small">
                         <li>
                         Classification Models
@@ -118,7 +117,7 @@
                         </li>
                     </ul>
                     </p>
-                   <a href="https://docs.google.com/a/berkeley.edu/presentation/d/1MjarAfW8HOpCPedzbrOp2zSfMudOb0rdCWuctHULB8M/edit?usp=sharing"class="btn btn-primary btn-xl page-scroll" target="_blank">View Presentation</a>
+                   <a href="Add prsentation link ">View Presentation</a>
                 </div>
                 <div class="col-lg-4 text-center" style="padding-top: 100px">
                 <img src="img/nyce/index.png" class="img-responsive" alt="" style="margin :auto">
