@@ -599,3 +599,24 @@ body {
     transform: none;
   }
 }
+
+/* Heading above the logo marquee */
+.logo-marquee-heading {
+  margin: 72px 0 10px;   /* 4 lines of space above */
+  text-align: center;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  font-style: italic;   /* ← makes it italic */
+  text-transform: none;
+  font-size: 14px;
+}
+
+
+/* Responsive tweak */
+@media (max-width: 768px) {
+  .logo-marquee-heading {
+    font-size: 13px;
+    margin: 14px 0 8px;
+  }
+}
