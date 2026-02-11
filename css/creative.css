@@ -474,3 +474,128 @@ img::-moz-selection {
 body {
     webkit-tap-highlight-color: #222;
 }
+
+/* ===============================
+   Horizontal auto-scrolling logos
+   =============================== */
+/* ==========================================
+   Horizontal Auto-Scrolling Logo Marquee
+   Works best when logo set is duplicated in HTML
+   ========================================== */
+
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 24px;
+  padding: 16px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.20);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+  position: relative;
+}
+
+/* Optional: subtle fade at the edges (matches bg-primary look) */
+.logo-marquee::before,
+.logo-marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 70px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-marquee::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(240, 95, 64, 1), rgba(240, 95, 64, 0));
+}
+
+.logo-marquee::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(240, 95, 64, 1), rgba(240, 95, 64, 0));
+}
+
+/* IMPORTANT:
+   Use this class name in HTML: class="logo-marquee-track"
+*/
+.logo-marquee-track {
+  display: flex;
+  flex-direction: row;          /* Force horizontal */
+  align-items: center;
+  gap: 48px;
+
+  width: max-content;           /* Makes the track wider than viewport */
+  white-space: nowrap;
+
+  animation: scroll-logos 25s linear infinite;
+  will-change: transform;
+}
+
+/* Logos */
+.logo-marquee img {
+  display: inline-block;        /* Prevent vertical stacking */
+  height: 36px;
+  width: auto;
+  max-width: 140px;
+  object-fit: contain;
+
+  opacity: 0.95;
+  margin: 0 !important;         /* Override theme centring rules */
+  vertical-align: middle;
+
+  /* IMPORTANT:
+     Do NOT invert colours unless your logos are monochrome icons.
+     If you want white logos on coloured background, provide white PNG/SVG assets instead.
+  */
+  filter: none;
+
+  /* Optional polish */
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.logo-marquee img:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+/* Pause on hover */
+.logo-marquee:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Animation */
+@keyframes scroll-logos {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* assumes duplicated logo set in HTML */
+}
+
+/* Responsive tuning */
+@media (max-width: 768px) {
+  .logo-marquee {
+    margin-top: 18px;
+    padding: 12px 0;
+  }
+
+  .logo-marquee-track {
+    gap: 28px;
+    animation-duration: 18s;
+  }
+
+  .logo-marquee img {
+    height: 28px;
+    max-width: 120px;
+  }
+
+  .logo-marquee::before,
+  .logo-marquee::after {
+    width: 45px;
+  }
+}
+
+/* Respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee-track {
+    animation: none;
+    transform: none;
+  }
+}
