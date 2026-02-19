@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Audience data and insights platform (CAM) using dbt, Airflow, Redshift and Power BI.">
+    <meta name="author" content="Dayanand Balaboina">
+
+    <title>Dayanand Balaboina | Audience Data & Insights</title>
+    <link rel="shortcut icon" href="img/a-icon.ico" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <!-- Project Content -->
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+
+                <!-- LEFT: Content -->
+                <div class="col-lg-8 text-center" style="text-align: left">
+
+                    <h2 style="font-style: italic">Audience Data and Insights (Centralised Audience Mart)</h2>
+
+                    <h4>CONCEPT</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Designed and delivered a Centralised Audience Mart (CAM) to provide a scalable foundation for
+                        audience member insight across reporting, ad‑hoc analysis, and data science. The solution
+                        prioritised reduced platform complexity, a documented operating model, and a standards framework
+                        to support ongoing evolution and metric consistency.
+                    </p>
+
+                    <h4>OBJECTIVES</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li><strong>Reduce complexity:</strong> simplify integration patterns to minimise failure risk and improve maintainability.</li>
+                        <li><strong>Document the solution:</strong> establish clear, reusable documentation for platform understanding and onboarding.</li>
+                        <li><strong>Standards framework:</strong> define a simplified MDM/standards approach to support future growth and change.</li>
+                        <li><strong>Commercial enablement:</strong> baseline audience data for dashboards, self‑service access, and analytics feature layers.</li>
+                    </ul>
+
+                    <h4>DATA SOURCES</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li><strong>SAP / Gigya accounts:</strong> account lifecycle (signup, registration, verification, active/inactive).</li>
+                        <li><strong>Digital events (Tealium / Atomic domain):</strong> event and interaction telemetry, user context, session attributes.</li>
+                        <li><strong>Third‑party platforms:</strong> Facebook, Google, Apple (activation/marketing signals where applicable).</li>
+                        <li><strong>Content metadata:</strong> consolidated into iView, News, and Papi domains.</li>
+                    </ul>
+
+                    <h4>ARCHITECTURE (DBT LAYERING)</h4>
+                    <p class="text-faded" style="font-size: small">
+                        The platform follows a layered dbt structure to keep logic clean, testable, and easier to evolve:
+                    </p>
+                    <ul class="text-faded" style="font-size: small">
+                        <li><strong>CAM Base:</strong> source alignment (renaming, recasting types, required field acquisition).</li>
+                        <li><strong>CAM Staging:</strong> entity construction and normalisation (joins, entity groupings, derived fields).</li>
+                        <li><strong>CAM Mart:</strong> curated datasets (final entity association, minimal duplication, only materialise when needed).</li>
+                        <li><strong>Reporting layer:</strong> analytics‑ready tables and reference models, optimised for BI consumption.</li>
+                    </ul>
+
+                    <h4>DATA PIPELINE</h4>
+                    <p class="text-faded" style="font-size: small">
+                        SAP/Gigya + Tealium + metadata → <strong>dbt (Base → Staging → Mart)</strong> → <strong>Reporting layer</strong> →
+                        <strong>Power BI dashboards</strong>. Pipelines are orchestrated using <strong>Airflow</strong>, enabling consistent scheduling,
+                        dependency management, and automated documentation.
+                    </p>
+
+                    <h4>INCREMENTAL &amp; PERFORMANCE DESIGN</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Implemented incremental ETL patterns to append new events/accounts and update point‑in‑time entities,
+                        allowing missed batches to catch up safely by resuming from the last successful load. Accounts/users are
+                        treated as current‑state (“point in time”) datasets, while interactions/activities are treated as historical
+                        event streams. The daily ETL was optimised to run in ~48 minutes.
+                    </p>
+
+                    <h4>CI/CD AND OPERATIONALISATION</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Established a structured CI/CD approach across Testing, Development, and Production environments.
+                        Changes are developed in isolated branches/schemas, validated with dbt tests, and promoted through
+                        controlled releases. Airflow DAGs support environment‑specific runs and automate dbt documentation
+                        generation to keep solution knowledge current.
+                    </p>
+
+                    <!-- CI/CD diagram embedded where appropriate -->
+                    <div style="margin: 12px 0 18px;">
+                        <img src="img/dyce/dbt-airflow-orchestration.png"
+                             class="img-responsive"
+                             alt="CI/CD - dbt Airflow Configuration"
+                             style="margin: auto; border: 2px solid rgba(255,255,255,0.25); border-radius: 4px;">
+                        <p class="text-faded" style="font-size: small; margin-top: 8px;">
+                            CI/CD flow showing dbt development across Testing, Development, and Production, orchestrated by Airflow DAGs.
+                        </p>
+                    </div>
+
+                    <h4>DATA QUALITY AND TESTING</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Built a robust testing strategy, including 80+ data quality checks across Base, Staging, Mart, and Reporting.
+                        Tests cover schema compliance, freshness, referential integrity, table size consistency, and trend/outlier checks.
+                        Failures are classified by severity (warning vs error) and integrated into an alerting workflow for rapid triage.
+                    </p>
+
+                    <!-- Data Quality diagram embedded where appropriate -->
+                    <div style="margin: 12px 0 18px;">
+                        <img src="img/dyce/test-workflows.png"
+                             class="img-responsive"
+                             alt="Data Quality Testing and Production Error Resolution Workflow"
+                             style="margin: auto; border: 2px solid rgba(255,255,255,0.25); border-radius: 4px;">
+                        <p class="text-faded" style="font-size: small; margin-top: 8px;">
+                            Data quality testing workflow (recommended configuration) and the production error resolution process.
+                        </p>
+                    </div>
+
+                    <h4>INSIGHTS &amp; REPORTING</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Delivered Power BI reporting solutions that improved the BI consumption experience and increased stakeholder
+                        adoption. Reporting models were designed to support descriptive and diagnostic views, with scope to extend into
+                        feature layers for predictive and prescriptive analytics.
+                    </p>
+
+                    <h4>DELIVERED OUTCOMES (HIGHLIGHTS)</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li>Engineered scalable dbt + Redshift + Airflow pipelines, reducing ingestion time by ~30% and improving model accuracy by ~50%.</li>
+                        <li>Modernised the cloud‑native warehouse experience, reducing retrieval time by ~40% and improving BI usability.</li>
+                        <li>Implemented a transformation framework that reduced processing time by ~50% and lifted data quality by ~40%.</li>
+                        <li>Led metric harmonisation across teams, improving consistency by ~20%.</li>
+                        <li>Delivered segmentation POCs using clustering algorithms to support audience targeting and activation.</li>
+                    </ul>
+
+                    <h4>FUTURE SCOPE (NEXT ITERATIONS)</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li><strong>User stitching:</strong> logic prepared and awaiting approval for inclusion in a future release.</li>
+                        <li><strong>Sessionisation:</strong> investigated and requires cross‑group agreement on approach and definitions.</li>
+                        <li><strong>Metadata uplift:</strong> further clean‑up and standardisation offers significant downstream value.</li>
+                        <li><strong>Historical loads:</strong> extend backfill to strengthen trend analysis and predictive analytics readiness.</li>
+                    </ul>
+
+                    <h4>TECHNOLOGIES USED</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li>Data Sources: SAP/Gigya, Tealium (Atomic domain events), content metadata, third‑party platforms (Facebook, Google, Apple)</li>
+                        <li>Warehouse: Amazon Redshift</li>
+                        <li>Transformations &amp; Modelling: dbt (layered architecture and styleguide)</li>
+                        <li>Orchestration &amp; CI/CD: Apache Airflow (environment DAGs, documentation automation)</li>
+                        <li>Observability / Alerts: test outputs integrated into alerting workflows</li>
+                        <li>Reporting: Power BI</li>
+                        <li>Advanced Analytics: Python (segmentation / clustering POCs)</li>
+                    </ul>
+
+                </div>
+
+                <!-- RIGHT: Images (optional: keep for additional visuals) -->
+                <div class="col-lg-4 text-center" style="padding-top: 100px">
+
+                    <img src="img/dyce/architecture.png" class="img-responsive" alt="Audience Data Architecture" style="margin: auto;">
+                    <p>End‑to‑End CAM Architecture (High Level)</p>
+
+                    <img src="img/dyce/dbt-airflow-orchestration.png" class="img-responsive" alt="CI/CD dbt Airflow Configuration" style="margin: auto;">
+                    <p>CI/CD – dbt + Airflow</p>
+
+                    <img src="img/dyce/test-workflows.png" class="img-responsive" alt="Data Quality Testing Workflow" style="margin: auto;">
+                    <p>Data Quality Testing &amp; Resolution Workflow</p>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row" class="call-to-action">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get In Touch!</h2>
+                    <hr class="primary">
+                </div>
+
+                <div class="col-lg-2 col-lg-offset-3 text-center">
+                    <a href="https://github.com/Dayab24" class="fa fa-github fa-3x wow bounceIn"></a>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="https://linkedin.com/in/dayanandb" class="fa fa-linkedin fa-3x wow bounceIn"></a>
+                </div>
+                <div class="col-lg-2 text-center">
+                    <a href="mailto:dayanandb24@gmail.com" class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
