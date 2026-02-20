@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="School risk scoring algorithm and audit intelligence scorecard.">
+    <meta name="author" content="Dayanand Balaboina">
+
+    <title>Dayanand Balaboina | School Risk Score Algorithm</title>
+    <link rel="shortcut icon" href="img/a-icon.ico" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Project Content -->
+
+<!-- Project Content -->
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+
+                <!-- LEFT: Project Content -->
+                <div class="col-lg-8 text-center" style="text-align: left">
+
+                    <h2 style="font-style: italic">Regulatory Reporting Solution (APRA Returns)</h2>
+
+                    <h4>CONTEXT</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Delivered a regulatory‑grade reporting platform for a financial services organisation spanning
+                        superannuation, life insurance, and banking. The solution enables repeatable APRA submissions by
+                        consolidating product holdings across source systems, enforcing master data governance, and
+                        operationalising end‑to‑end QA and sign‑off workflows.
+                    </p>
+
+                    <h4>DISCOVERY &amp; FEASIBILITY</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Led feasibility and current‑state assessment across infrastructure, data flows, and product reporting
+                        processes. Identified source‑system variance, reconciliation pain points, and control gaps; then
+                        defined a pragmatic target architecture focused on auditability, traceability, and operational resilience.
+                    </p>
+
+                    <h4>TARGET ARCHITECTURE</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Implemented a metadata‑driven pipeline: raw source files land in <strong>Amazon S3</strong>, while
+                        file lineage, processing status, and validation outcomes are persisted in <strong>Amazon Redshift</strong>
+                        metadata tables. Native <strong>Python</strong> validation reconciles source data against governed master
+                        data in <strong>Profisee</strong> to standardise product holdings and reduce duplication before downstream consumption.
+                    </p>
+
+                    <h4>ORCHESTRATION &amp; ENGINEERING</h4>
+                    <p class="text-faded" style="font-size: small">
+                        All processing is orchestrated with <strong>Apache Airflow</strong>, enabling dependency management,
+                        retries, parameterised reruns, and operational visibility. Code is versioned in <strong>GitLab</strong>
+                        with repeatable jobs supporting both scheduled ingestion and on‑demand regulatory production cycles.
+                    </p>
+
+                    <h4>DATA QUALITY, CONTROLS &amp; GOVERNANCE</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Established data quality gates prior to consumption: only files that pass conformance and reconciliation
+                        checks are loaded into <strong>QA tables</strong> (Redshift). These QA tables feed product‑specific dashboards,
+                        enabling Product Owners to verify figures against domain expectations before approval. Any discrepancies
+                        trigger controlled re‑processing and re‑validation until the dataset is signed off.
+                    </p>
+
+                    <h4>QA &amp; REGULATORY SUBMISSION WORKFLOW</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Following product sign‑off, an <strong>on‑demand</strong> Airflow job generates the APRA submission pack
+                        in the required <strong>Excel</strong> formats for regulatory lodgement. In parallel, approved datasets are
+                        promoted to curated reporting layer tables used by Product and Actuarial teams, with Executive dashboards
+                        consuming the same governed outputs to maintain consistency between regulatory and management reporting.
+                    </p>
+
+                    <h4>REGULATORY OUTPUTS</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Automated production of APRA returns including <strong>606, 611, and 550 series</strong>, significantly reducing
+                        manual effort and cycle time while improving repeatability, evidence, and traceability for audit and compliance.
+                    </p>
+
+                    <h4>REPORTING &amp; TRANSPARENCY</h4>
+                    <p class="text-faded" style="font-size: small">
+                        Delivered self‑serve <strong>Power BI</strong> dashboards for product QA and operational tracking, improving stakeholder
+                        transparency and trust in the transformation process. Executive reporting is powered from the same reporting layer to
+                        ensure a single, governed version of the truth.
+                    </p>
+
+                    <h4>MEASURABLE IMPACT</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li>Automated ingestion from S3 to Redshift using Airflow, streamlining data transfer and repeatability.</li>
+                        <li>Improved pipeline efficiency and accuracy through Python, SQL, and orchestration best practices.</li>
+                        <li>Automated APRA report production (606, 611, 550 series) in required Excel formats, reducing production effort and time.</li>
+                        <li>Integrated Profisee MDM controls, improving data accuracy by ~35% and reducing duplication by ~30%.</li>
+                        <li>Reduced time required for document retrieval and QA cycles, saving ~2 days for analysts and testers.</li>
+                        <li>Improved stakeholder transparency and trust through product QA dashboards and executive reporting alignment.</li>
+                    </ul>
+
+                    <h4>TECHNOLOGY STACK</h4>
+                    <ul class="text-faded" style="font-size: small">
+                        <li>Languages: Python, SQL</li>
+                        <li>Orchestration: Apache Airflow</li>
+                        <li>Storage: Amazon S3</li>
+                        <li>Warehouse: Amazon Redshift (metadata tables, QA tables, reporting layer)</li>
+                        <li>Data Governance / MDM: Profisee</li>
+                        <li>Version Control: GitLab</li>
+                        <li>Dashboards: Power BI</li>
+                    </ul>
+
+                </div>
+
+                <!-- RIGHT: Images -->
+                <!-- RIGHT: Images -->
+                <div class="col-lg-4 text-center" style="padding-top: 100px">
+                    
+                    <img src="img/eyce/architecture.png" class="img-responsive" alt="Regulatory reporting architecture overview" style="margin: auto;">
+                    <p>High level Architecture</p>
+
+                    <img src="img/eyce/qa-workflow.png" class="img-responsive" alt="QA sign-off loop and APRA submission workflow" style="margin: auto;">
+                    <p>QA Sign-off Loop and APRA Submission Workflow</p>
+
+                </div>
+                
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <div class="container">
+            <div class="row" class="call-to-action">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get In Touch!</h2>
+                    <hr class="primary">
+                </div>
+
+                <div class="col-lg-2 col-lg-offset-3 text-center">
+                    <a href="https://github.com/Dayab24" class="fa fa-github fa-3x wow bounceIn" aria-label="GitHub"></a>
+                </div>
+
+                <div class="col-lg-2 text-center">
+                    <a href="http://linkedin.com/in/dayanandb" class="fa fa-linkedin fa-3x wow bounceIn" aria-label="LinkedIn"></a>
+                </div>
+
+                <div class="col-lg-2 text-center">
+                    <a href="mailto:dayanandb24@gmail.com" class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s" aria-label="Email"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
