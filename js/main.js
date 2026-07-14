@@ -65,7 +65,9 @@
   }
 
   // Lightbox: click a project image to zoom it in a popup
-  var galleryImgs = document.querySelectorAll(".project-gallery img, .project-body figure img");
+  var galleryImgs = document.querySelectorAll(
+    ".project-gallery img, .project-body figure img, .project-card-media img"
+  );
   if (galleryImgs.length) {
     var overlay = document.createElement("div");
     overlay.className = "lightbox-overlay";
@@ -87,7 +89,13 @@
     };
 
     galleryImgs.forEach(function (img) {
-      img.addEventListener("click", function () {
+      img.addEventListener("click", function (e) {
+        // Homepage project-card thumbnails sit inside a link to the project
+        // page; the image itself should zoom instead of navigating away.
+        if (img.closest("a")) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
         openLightbox(img.currentSrc || img.src, img.alt);
       });
     });
