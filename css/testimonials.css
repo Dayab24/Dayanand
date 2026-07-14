@@ -1,0 +1,106 @@
+/* Circular Animated Testimonials — demo component
+   Style reference: Northstrix, "Circular Animated Testimonials (gsap version)"
+   https://codepen.io/Northstrix/pen/QwWoYzZ (light theme variant) */
+
+.testimonials-demo {
+  --tt-bg: #f7f7fa;
+  --tt-name: #0a0a0a;
+  --tt-title: #454545;
+  --tt-quote: #1a1a1a;
+  --tt-arrow-bg: #141414;
+  --tt-arrow-fg: #f7f7fa;
+  --tt-arrow-hover: #00a6fb;
+
+  background: var(--tt-bg);
+  border-radius: 20px;
+  padding: 56px 40px 44px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tt-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 18px;
+}
+
+.tt-avatar {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e2e2e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.tt-avatar svg { width: 100%; height: 100%; }
+
+.tt-quote {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--tt-quote);
+  max-width: 46ch;
+  min-height: 4.7em;
+}
+
+.tt-name { font-size: 28px; font-weight: 700; color: var(--tt-name); margin: 0; }
+.tt-title { font-size: 20px; color: var(--tt-title); margin: -8px 0 0; }
+
+.tt-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-top: 12px;
+}
+
+.tt-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--tt-arrow-bg);
+  color: var(--tt-arrow-fg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+.tt-arrow:hover, .tt-arrow:focus-visible { background: var(--tt-arrow-hover); transform: translateY(-2px); }
+.tt-arrow svg { width: 18px; height: 18px; fill: currentColor; }
+
+.tt-dots { display: flex; gap: 8px; }
+.tt-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #d6d6de;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.tt-dot.is-active { background: var(--tt-arrow-hover); transform: scale(1.25); }
+
+/* crossfade between testimonials */
+.tt-card { opacity: 1; transform: translateY(0); transition: opacity 0.35s ease, transform 0.35s ease; }
+.tt-card.is-transitioning { opacity: 0; transform: translateY(6px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .tt-card { transition: none; }
+}
+
+.demo-note {
+  max-width: 640px;
+  margin: 0 auto 24px;
+  padding: 14px 18px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  color: var(--color-ink-faint);
+}

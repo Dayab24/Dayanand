@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Web scraping and classification of data science job postings from Indeed.">
+    <meta name="author" content="Dayanand Balaboina">
+
+    <title>Dayanand Balaboina | Web Scraping Job Postings</title>
+    <link rel="shortcut icon" href="img/a-icon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body id="page-top">
+
+    <header class="site-header">
+        <div class="container nav-inner">
+            <a class="brand" href="index.html">Dayanand Balaboina</a>
+
+            <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="nav-links" id="primary-nav">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#achievements">Achievements</a></li>
+                <li><a href="index.html#expertise">Expertise</a></li>
+                <li><a href="index.html#projects">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <header class="project-hero">
+            <div class="container">
+                <span class="eyebrow"><a href="index.html#projects">Web-Scraped Indeed Postings</a></span>
+                <h1>Web Scraping Job Postings</h1>
+            </div>
+        </header>
+
+        <section class="section">
+            <div class="container project-layout">
+                <article class="project-body">
+                    <h3>Concept</h3>
+                    <p>In this project my two main objectives were:</p>
+                    <ol>
+                        <li>Determine the industry factors that are most important in predicting the salary amounts for these data.</li>
+                        <li>Determine the factors that distinguish job categories and titles from each other; for example, can required skills accurately predict job title?</li>
+                    </ol>
+                    <p>This required scraping and preparing the data.</p>
+
+                    <h3>Data</h3>
+                    <p>
+                        Firstly, I scraped the data from the site using BeautifulSoup4 to get job listings for the titles
+                        "Data Scientist", "Data Analyst" and "Data Engineer", ending up with a data frame of shape 3210 × 5.
+                        The 5 columns are Title, Company, Salary, State, and Description. As most of the data did not have
+                        salary values, those rows needed to be dropped because the problem statement is based on salary.
+                        After loading into the DataFrame, I started analysing the data through EDA and feature engineering,
+                        ending up with a clean dataset of size 285 × 5.
+                    </p>
+                    <p>
+                        In the exploratory data analysis phase, I found that most of the jobs are from NSW when compared
+                        to all other states. The highest salary in the dataset is for the title "Head of Data Science",
+                        paying 300K PA and based in NSW. The median salary is 95K PA. Most of the job postings were of
+                        title Data Analyst, followed by Data Science and Data Engineer. I feature engineered the title
+                        column to extract senior, mid, and junior levels, and added a skills column by extracting skills
+                        from the description.
+                    </p>
+
+                    <h3>Process</h3>
+                    <p>In order to analyze the data and generate insights out of it, I followed a process that looked at the data using the following visualizations:</p>
+                    <div class="tech-groups">
+                        <ul class="chip-list">
+                            <li class="chip">Job postings across all states</li>
+                            <li class="chip">Exploratory Data Analysis using Tableau</li>
+                            <li class="chip">Boxplots to see outliers</li>
+                            <li class="chip">Confusion matrix</li>
+                            <li class="chip">Scatter plot</li>
+                            <li class="chip">Bipartite graph</li>
+                            <li class="chip">ROC curve</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <aside class="project-gallery">
+                    <figure>
+                        <img src="img/jeopardy/p2.png" alt="Job postings across all states">
+                        <figcaption>Job Postings Across All States</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/jeopardy/index.png" alt="Distribution of salaries">
+                        <figcaption>Distribution of Salaries</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="img/jeopardy/ROC.png" alt="ROC curve">
+                        <figcaption>ROC Curve</figcaption>
+                    </figure>
+                </aside>
+            </div>
+
+            <div class="container project-nav-footer">
+                <a href="index.html#projects" class="back-link">Back to projects</a>
+            </div>
+        </section>
+
+        <section class="section section-alt" id="contact">
+            <div class="container">
+                <div class="section-head">
+                    <h2>Get In Touch!</h2>
+                    <hr class="rule">
+                </div>
+                <nav class="contact-icons" aria-label="Contact links">
+                    <a href="https://github.com/Dayab24" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.4 7.86 10.93.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.28-1.69-1.28-1.69-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.35.96.1-.74.4-1.25.72-1.54-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.44-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.7 5.38-5.27 5.67.42.36.78 1.07.78 2.15v3.19c0 .3.2.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+                    </a>
+                    <a href="https://au.linkedin.com/in/dayab" aria-label="LinkedIn">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM.5 8.98h4.9V23H.5V8.98Zm7.9 0h4.7v1.92h.07c.65-1.23 2.25-2.53 4.63-2.53 4.95 0 5.86 3.26 5.86 7.5V23h-4.9v-6.28c0-1.5-.03-3.43-2.09-3.43-2.1 0-2.42 1.64-2.42 3.33V23h-4.85V8.98Z"/></svg>
+                    </a>
+                    <a href="mailto:dayanandb24@gmail.com" aria-label="Email">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1Zm18.4 2H3.6l8.4 6.3L20.4 6ZM3 7.4V18h18V7.4l-8.7 6.53a1 1 0 0 1-1.2 0L3 7.4Z"/></svg>
+                    </a>
+                </nav>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">&copy; 2026 Dayanand Balaboina</div>
+    </footer>
+
+    <script src="js/main.js" defer></script>
+</body>
+</html>
