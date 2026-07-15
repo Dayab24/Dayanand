@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/testimonials.css">
+    <link rel="stylesheet" href="css/achievements-carousel.css">
 </head>
 
 <body id="page-top">
@@ -109,41 +109,38 @@
                     <hr class="rule">
                 </div>
 
-                <div class="testimonials-demo reveal" data-testimonials='[
-                    {"quote":"Delivered enterprise-scale data platforms across Snowflake, Databricks, Azure and Oracle, enabling whole-of-government procurement analytics, automated reporting, and trusted decision-making across NSW Government.","name":"NSW Treasury","title":""},
-                    {"quote":"Architected whole-of-government procurement analytics solutions that streamlined supplier data processing, improved reporting reliability, and enabled strategic spend analysis across government agencies.","name":"NSW Treasury","title":""},
-                    {"quote":"Awarded the Innovation Award for delivering a high-impact enterprise automation solution that transformed Audit Office reporting processes and reduced manual effort through intelligent workflow automation.","name":"NSW Treasury","title":"Innovation Award"},
-                    {"quote":"Modernised the cloud analytics platform using dbt, Redshift and Airflow, reducing data ingestion times by 30%, improving analytical model performance by 50%, and reducing data retrieval times by 40%.","name":"ABC (Australian Broadcasting Corporation)","title":""},
-                    {"quote":"Delivered a data governance transformation program that reduced reporting errors by 40% and generated more than $500K annually in operational savings.","name":"NSW Department of Education","title":""},
-                    {"quote":"Built a centralised enterprise reporting platform that eliminated manual reporting processes and delivered approximately $2M annually in operational savings.","name":"Tabcorp","title":""},
-                    {"quote":"Improved master data accuracy by 35% and reduced duplicate records by 30% through the implementation of enterprise data governance and data quality frameworks.","name":"AMP","title":""},
-                    {"quote":"Led large-scale cloud migration, data integration and platform modernisation initiatives that improved operational efficiency by 20% while strengthening platform scalability, governance and long-term maintainability.","name":"NatRoad","title":""}
+                <div class="achv-carousel-single reveal" role="region" aria-roledescription="carousel" aria-label="Career achievements" data-achievements='[
+                    {"company":"NSW Treasury","logo":"img/logos/trsy.png","stat":"Enterprise-Scale Data Platforms","quote":"Delivered data platforms across Snowflake, Databricks, Azure and Oracle for whole-of-government analytics and trusted decision-making."},
+                    {"company":"NSW Treasury","logo":"img/logos/trsy.png","stat":"Whole-of-Government Analytics","quote":"Architected procurement analytics that streamlined supplier data processing and enabled strategic spend analysis."},
+                    {"company":"NSW Treasury","logo":"img/logos/trsy.png","stat":"Innovation Award","quote":"Delivered a high-impact automation solution that transformed Audit Office reporting and cut manual effort."},
+                    {"company":"ABC (Australian Broadcasting Corporation)","logo":"img/logos/Abc.png","stat":"50% Faster Model Performance","quote":"Modernised the cloud analytics platform with dbt, Redshift and Airflow, also cutting ingestion time 30% and retrieval time 40%."},
+                    {"company":"NSW Department of Education","logo":"img/logos/edu.png","stat":"$500K Saved Annually","quote":"Led a data governance transformation that also cut reporting errors by 40%."},
+                    {"company":"Tabcorp","logo":"img/logos/Tab.png","stat":"$2M Saved Annually","quote":"Built a centralised enterprise reporting platform that eliminated manual reporting processes."},
+                    {"company":"AMP","logo":"img/logos/amp.png","stat":"35% Accuracy Improvement","quote":"Improved master data accuracy and cut duplicate records 30% through enterprise data governance."},
+                    {"company":"NatRoad","logo":null,"stat":"20% Efficiency Gain","quote":"Led large-scale cloud migration and platform modernisation, strengthening governance and scalability."}
                 ]'>
-                    <div class="tt-card">
-                        <div class="tt-avatar">
-                            <svg viewBox="0 0 84 84" aria-hidden="true">
-                                <rect width="84" height="84" fill="#fdece5"/>
-                                <ellipse cx="24" cy="40" rx="7" ry="5.5" fill="#b8bec4"/>
-                                <rect x="22.5" y="45.5" width="3" height="6" fill="#b8bec4"/>
-                                <rect x="18" y="51.5" width="12" height="3.5" rx="1.75" fill="#b8bec4"/>
-                                <ellipse cx="60" cy="42" rx="7" ry="5.5" fill="#c97b3d"/>
-                                <rect x="58.5" y="47.5" width="3" height="5" fill="#c97b3d"/>
-                                <rect x="54" y="52.5" width="12" height="3.5" rx="1.75" fill="#c97b3d"/>
-                                <ellipse cx="42" cy="34" rx="9" ry="7" fill="#e9b949"/>
-                                <rect x="40" y="41" width="4" height="8" fill="#e9b949"/>
-                                <rect x="34" y="49" width="16" height="4" rx="2" fill="#e9b949"/>
-                            </svg>
+                    <div class="achv-carousel-grid">
+                        <div class="achv-carousel-card">
+                            <div class="achv-carousel-logo">
+                                <img class="achv-carousel-logo-img" alt="">
+                                <span class="achv-carousel-logo-fallback-text" aria-hidden="true"></span>
+                            </div>
+                            <div class="achv-carousel-text" aria-live="polite" aria-atomic="true">
+                                <h4 class="achv-carousel-stat"></h4>
+                                <p class="achv-carousel-quote"></p>
+                            </div>
                         </div>
-                        <p class="tt-quote"></p>
-                        <p class="tt-name"></p>
-                        <p class="tt-title"></p>
-                        <div class="tt-controls">
-                            <button type="button" class="tt-arrow tt-prev" aria-label="Previous achievement">
+                        <div class="achv-carousel-arrows">
+                            <button type="button" class="arrow-button prev-button" aria-label="Previous achievement">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 6 12l9 8 1.4-1.4L8.8 12l7.6-6.6Z"/></svg>
                             </button>
-                            <div class="tt-dots" role="tablist" aria-label="Achievement selector"></div>
-                            <button type="button" class="tt-arrow tt-next" aria-label="Next achievement">
+                            <button type="button" class="arrow-button next-button" aria-label="Next achievement">
                                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 8 5.4 15.6 12 8 18.6 9 20l9-8Z"/></svg>
+                            </button>
+                            <span class="achv-carousel-counter" aria-hidden="true"></span>
+                            <button type="button" class="arrow-button pause-button" aria-label="Pause automatic rotation" aria-pressed="false">
+                                <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5h3v14H8zM13 5h3v14h-3z"/></svg>
+                                <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M8 5v14l11-7Z"/></svg>
                             </button>
                         </div>
                     </div>
@@ -339,6 +336,6 @@
     </footer>
 
     <script src="js/main.js" defer></script>
-    <script src="js/testimonials.js" defer></script>
+    <script src="js/achievements-carousel.js" defer></script>
 </body>
 </html>

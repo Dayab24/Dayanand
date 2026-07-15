@@ -1,0 +1,116 @@
+/* ==========================================================================
+   Career Achievements — single sequential carousel
+   Stacked layout: company name, then logo, then achievement text/arrows.
+   One achievement visible at a time; cycles NSW Treasury -> ABC -> NSW Dept
+   of Education -> Tabcorp -> AMP -> NatRoad via arrows/autoplay.
+   ========================================================================== */
+
+.achv-carousel-single {
+  max-width: 640px;
+  margin: 0 auto;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+}
+.achv-carousel-single:active { cursor: grabbing; }
+.achv-carousel-single.is-transitioning { opacity: 0; transform: translateY(6px); }
+
+.achv-carousel-grid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.achv-carousel-card {
+  position: relative;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  background: var(--color-bg-alt);
+  border: 1.5px solid var(--color-accent-border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 8px 10px 10px;
+}
+.achv-carousel-card::before,
+.achv-carousel-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--color-accent-border);
+  border-radius: var(--radius);
+  background: var(--color-bg-alt);
+}
+.achv-carousel-card::before { z-index: -1; transform: rotate(-6deg) translate(-6px, 3px); }
+.achv-carousel-card::after { z-index: -2; opacity: 0.7; transform: rotate(5deg) translate(7px, 5px); }
+
+.achv-carousel-logo {
+  width: 120px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.achv-carousel-logo-img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.achv-carousel-logo-fallback-text {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.achv-carousel-text { width: 100%; }
+.achv-carousel-stat {
+  margin: 0 0 6px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-accent-dark);
+}
+.achv-carousel-quote { margin: 0; font-size: 0.95rem; color: var(--color-ink-soft); min-height: 4.5em; }
+
+.achv-carousel-arrows { display: flex; align-items: center; justify-content: center; gap: 10px; }
+
+.arrow-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--color-ink-faint);
+  background: var(--color-bg-alt);
+  color: var(--color-ink-soft);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.arrow-button svg { width: 18px; height: 18px; fill: currentColor; }
+.arrow-button:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; }
+.arrow-button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+.pause-button { margin-left: 6px; }
+.pause-button svg { width: 16px; height: 16px; }
+
+.achv-carousel-counter {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  margin-left: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .achv-carousel-single { transition: none; }
+}

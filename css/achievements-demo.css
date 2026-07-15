@@ -1,0 +1,80 @@
+/* ==========================================================================
+   Career Achievements — style demo (3 layout options)
+   Scoped with an "achv-" prefix so nothing here collides with style.css.
+   ========================================================================== */
+
+/* Shared card look ----------------------------------------------------------- */
+.achv-card,
+.achv-ticker-card {
+  background: #fff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 28px 24px;
+}
+.achv-card-accent {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+.achv-stat {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--color-accent-dark);
+  line-height: 1.15;
+}
+.achv-stat-unit { font-size: 0.7em; font-weight: 700; }
+.achv-stat-label {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+  margin-top: 2px;
+}
+.achv-company {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  margin-top: 14px;
+}
+.achv-context {
+  font-size: 0.92rem;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+/* Option 1: stat grid --------------------------------------------------------- */
+.achv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+}
+
+/* Option 2 (grouped by company) now lives entirely in achievements-carousel.css */
+
+/* Option 3: horizontal scroll-snap ticker ------------------------------------ */
+.achv-ticker {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(to right, transparent, #000 4%, #000 96%, transparent);
+  padding: 4px 0 20px;
+}
+.achv-ticker-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  padding: 0 24px;
+  scroll-snap-type: x mandatory;
+}
+.achv-ticker-card {
+  width: 210px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+.achv-ticker-hint {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+  margin-top: -8px;
+}
